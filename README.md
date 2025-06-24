@@ -6,8 +6,8 @@ A full-stack task management web application with authentication, task CRUD, sta
 
 ##  Live Demo
 
-- 🔗 Frontend: _[Add your Vercel link here]_
-- 🔗 Backend: _[Add your Render / Localhost link here]_
+- 🔗 Frontend: https://task-manager-lr5p.vercel.app/
+- 🔗 Backend: https://taskmanager-cvk6.onrender.com
 
 ---
 
@@ -30,10 +30,10 @@ A full-stack task management web application with authentication, task CRUD, sta
 | Axios       | HTTP Requests             |
 | Node.js     | Backend Runtime           |
 | Express.js  | Backend Framework         |
-| MySQL       | Database                  |
+| Postgres    | Database                  |
 | Sequelize   | ORM                       |
 | Vercel      | Frontend Hosting          |
-| Render      | Backend Hosting (optional)|
+| Render      | Backend Hosting           |
 
 ---
 
@@ -45,22 +45,39 @@ git clone https://github.com/SheftaAnis/taskManager.git
 cd taskManager
 
 
-### 2. Setup Backend
+### 2. Setup backend
 cd backend
 npm install
 
-create a .env file
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
+#creat .env file in backend
+PORT=5432
+DB_HOST=your-neon-db-host-url
+DB_USER=your-neon-db-username
 DB_PASSWORD=yourpassword
-DB_NAME=task_manager
+DB_NAME=your_neondb_username
 JWT_SECRET=yourJWTSecret
+
 
 
 ### 3. Setup frontend
 cd ../frontend
 npm install
 npm run dev
+
+#create .env file in frontend
+VITE_BASE_URL=https://your-render-backend-url.onrender.com
+
+### Database:
+- PostgreSQL (Neon)
+
+### Hosting:
+- Frontend: Vercel  
+- Backend: Render  
+- DB: Neon (Free-tier PostgreSQL)
+
+### Screenshots
+
+
+
 
 
