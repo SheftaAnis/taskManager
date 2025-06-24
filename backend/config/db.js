@@ -1,14 +1,20 @@
+// backend/config/db.js
 const { Sequelize } = require('sequelize');
-require('dotenv').config();
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  process.env.DB_NAME,         // database
+  process.env.DB_USER,         // user
+  process.env.DB_PASSWORD,     // password
   {
     host: process.env.DB_HOST,
-    dialect: 'mysql',
-    logging: false, // optional: disable SQL logs
+    port: process.env.DB_PORT || 5432,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      }
+    }
   }
 );
 
