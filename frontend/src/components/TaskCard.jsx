@@ -14,7 +14,7 @@ export default function TaskCard({ task, onStatusChange }) {
   const updateStatus = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${task.id}`,
+        `${import.meta.env.VITE_BASE_URL}/api/tasks/${task.id}`,
         { status: nextStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -27,7 +27,7 @@ export default function TaskCard({ task, onStatusChange }) {
   const deleteTask = async () => {
     if (!window.confirm("Delete this task?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${task.id}`, {
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/tasks/${task.id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onStatusChange();
@@ -39,7 +39,7 @@ export default function TaskCard({ task, onStatusChange }) {
   const saveEditedTitle = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${task.id}`,
+        `${import.meta.env.VITE_BASE_URL}/api/tasks/${task.id}`,
         { title: editedTitle },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -11,11 +11,15 @@ export default function Dashboard() {
   const fetchTasks = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/tasks', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/tasks`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setTasks(res.data);
-    } catch {
+    } catch (error) {
+      console.error(error);
       alert('Error fetching tasks');
     }
   };
@@ -25,15 +29,16 @@ export default function Dashboard() {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/tasks',
+        `${import.meta.env.VITE_BASE_URL}/api/tasks`,
         { title },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
       setTitle('');
-      setRefresh((prev) => !prev);
-    } catch {
+      setRefresh((prev) => !prev); // trigger re-fetch
+    } catch (error) {
+      console.error(error);
       alert('Error creating task');
     }
   };
